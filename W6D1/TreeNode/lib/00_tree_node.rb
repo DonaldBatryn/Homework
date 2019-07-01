@@ -15,7 +15,7 @@ class PolyTreeNode
     end
     
     def value
-        @value
+        @value  
     end
 
     def parent=(mom) #pass nil to the methods, to make you an orphan
@@ -56,6 +56,10 @@ class PolyTreeNode
             el.children.each {|child| queue << child}
         end
         nil
+    end
+
+    def inspect
+        @value.inspect
     end
 end
 
