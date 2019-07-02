@@ -1,11 +1,11 @@
 require_relative "../TreeNode/lib/00_tree_node.rb"
+require "byebug"
 
 class KnightPathFinder
     attr_reader :root_node, :considered_positions
     def initialize(pos)
         @root_node = PolyTreeNode.new(pos)
         @considered_positions = [pos]
-        @grid = Array.new(8) {Array.new(8)}
     end
 
     def self.valid_moves(pos)
@@ -25,39 +25,44 @@ class KnightPathFinder
     def build_move_tree
         queue = [@root_node]
         while !queue.empty?
-            new_nodes = new_move_positions(queue[0]) 
-            new_nodes.each{ |node| @considered_positions << node.value}
-            new_nodes.each {|node| queue += queue[0].children}
+            new_moves = new_move_positions(queue[0]) 
+            new_moves.each  do |pos| 
+                child = PolyTreeNode.new(pos)
+                queue << child
+                queue[0].add_child(child)
+                
+            end
             queue.shift
         end
-        p @considered_positions.sort
     end
 
-    def find_path(root, target)
-        # p "find-path root #{root}"
-        return root, [] if root.value == target
-        # p "find-path children #{root.children}"
+    def find_path(target)
+        result = @root_node.dfs(target)
+        path = []
+        while result
+            path << result.value
+            result = result.parent
+        # return root, [] if root.value == target
     
-        root.children.each do |child| 
-            result, path = find_path(child, target)
+        # root.children.each do |child| 
+        #     result, path = find_path(child, target)
 
-            if result != nil
-                #if the result is nil, remove the record
-                return result, trace_back_path(result)
-            else
-                root.remove_child(child)
-                child.parent = nil
-                
-                # erase parent/children
-            end
+        #     if result != nil  
+        #         return result, trace_back_path(result)
+        #     else
+        #         root.remove_child(child)
+        #         child.parent = nil
+        #         # erase parent/children
+        #     end
+        # end
+                   
+        # # always start from root.
+        # # does this node exist
+        # nil
         end
-        self.build_move_tree            
-        # always start from root.
-        # does this node exist
-        nil
-
+        path.reverse
     end
-    
+
     # kpf = KnightPathFinder.new([0, 0])
     # kpf.find_path([7, 6]) # => [[0, 0], [1, 2], [2, 4], [3, 6], [5, 5], [7, 6]]
     # kpf.find_path([6, 2]) # => [[0, 0], [1, 2], [2, 0], [4, 1], [6, 2]]
@@ -81,26 +86,24 @@ class KnightPathFinder
     def new_move_positions(parent_node)
         # p "in the new_move #{parent_node}"
         new_moves = KnightPathFinder::valid_moves(parent_node.value)
-        new_nodes = []
-
+        new_moves.reject! {|child| @considered_positions.include?(child)}
         new_moves.each do |pos|
-            node = PolyTreeNode.new(pos)
-            node.parent = parent_node
-            parent_node.add_child(node)
-            new_nodes << node
+            
+            @considered_positions << pos
+      
         end
-
-
-        new_nodes.select {|child| !@considered_positions.include?(child.value)}
+ 
+        new_moves
     end
     
 end
+if __FILE__ == $PROGRAM_NAME
+    k = KnightPathFinder.new([0,0])
+    k.build_move_tree
 
-k = KnightPathFinder.new([0,0])
-k.build_move_tree
-
-p "find_path is "
-p k.find_path(k.root_node, [4,4])[1]  #works good but the path is not ideal yet
+    p "find_path is "
+    p k.find_path([4,4]) #works good but the path is not ideal yet
+end
 
 
 # nodes = []
