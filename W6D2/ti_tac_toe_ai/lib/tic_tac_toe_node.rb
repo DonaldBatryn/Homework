@@ -11,9 +11,37 @@ class TicTacToeNode
   end
 
   def losing_node?(evaluator)
+    if evaluator == :o
+      mark = :x
+    else
+      mark = :o
+    end
+
+    children.each do |child|
+      arr = child.board.rows.flatten
+      transpose = child.board.rows.transpose.flatten
+      for i in 0..2
+        if arr[i*3..i*3 + 2].uniq.length == 1 && arr[i*3] == evaluator
+          return p "someone is winning"
+        elsif transpose[i*3..i*3 + 2].uniq.length == 1 && transpose[i*3] == evaluator
+          return p "someone is winning"
+        end
+      end
+
+      diag1 = arr[0] + arr[5] + arr[8]
+      diag2 = arr[2] + arr[5] + arr[6]
+      if diag1.uniq.length == 1 && diag1[0] == evaluator
+        return p "someone is winning"
+      else diag2.uniq.length == 1 && diag1[0] == evaluator
+        return p "someone is winning"
+      end
+    
+    end
+    p "someone is losing"
   end
 
   def winning_node?(evaluator)
+    true
   end
 
   # This method generates an array of all moves that can be made after
@@ -23,21 +51,16 @@ class TicTacToeNode
       (0..2).each do |col|
         child = TicTacToeNode.new(@board.dup , @next_mover_mark, prev_move_pos)
         if child.board.rows[row][col] == nil
-          
           if @next_mover_mark == :o
             child.next_mover_mark = :x
           else
             child.next_mover_mark = :o
           end
-         
           child.prev_move_pos = [row, col]
           @children << child
           next
         end
       end
-
-
-
 
     end
     @children
