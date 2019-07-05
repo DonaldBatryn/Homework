@@ -1,9 +1,6 @@
-require_relative 'pawn.rb'
-require_relative 'KnightKing.rb'
-require_relative 'RookBishopQueen.rb'
-
 
 class Piece
+    attr_reader :color
 
     def initialize(color, board, pos)
         @color = color # symbol
@@ -11,12 +8,8 @@ class Piece
         @pos = pos # Array
     end
 
-    def moves
-        # returns array of places a piece can move to
-    end
-
     def to_s
-
+        self.color.to_s
     end
 
     def empty?
@@ -32,26 +25,12 @@ class Piece
     end
 
     def symbol
+        self.color.to_s
     end   
 
     private
 
     def move_into_check?(end_pos)
-    end
-
-end
-
-class NullPiece < Piece
-    include Singleton
-    
-    def initialize
-        super(color, board, pos)
-    end
-
-    def moves
-    end
-
-    def symbol
     end
 
 end
