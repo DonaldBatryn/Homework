@@ -85,10 +85,13 @@ class Board
     end
 
     def in_check?(color)
-
+        self.find_king(color)
+        
     end
 
     def find_king(color)
+        king = @rows.flatten.find {|piece| piece.is_a?(King) && piece.color == color}
+        king.pos
     end
 
     def pieces
@@ -105,16 +108,7 @@ class Board
 
 end
 
-# board = Board.new      
-# board.populate    
-# p board
-# puts                                                                                                                                                                                             
-# puts
-# p board.render
-# puts
+board = Board.new      
+board.populate    
+p board.find_king("white")
 
-
-# p board.grid.each do |row|
-#     puts row
-#     puts "\n"
-# end

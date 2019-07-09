@@ -9,7 +9,7 @@ class Display
     def initialize(board)
         @board = board
         @cursor = Cursor.new(@board)
-        @selected = false
+        
     end
 
     def render 
@@ -21,12 +21,11 @@ class Display
                 # tile coloring logic
                 if (i+j).even?
                     bg = :white
-
                 else
                     bg = :black
                 end
                 # cursor coloring logic
-                if @cursor.cursor_pos == [i, j] && @selected == true
+                if @cursor.cursor_pos == [i, j] && @cursor.selected == true
                     bg = :yellow
                 elsif @cursor.cursor_pos == [i, j]
                     bg = :blue
@@ -50,7 +49,6 @@ class Display
             self.render
             puts "Please enter some input: "
             result = @cursor.get_input
-            
         end
     end
 

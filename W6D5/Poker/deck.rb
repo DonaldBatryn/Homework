@@ -28,11 +28,11 @@ class Deck
 
 
 
-    # def swap_cards(cards)
-    #     self.return(cards)
-    #     new_cards = take(cards.length)
-    #     new_cards
-    # end
+    def swap_cards(cards)
+        self.return(cards)
+        new_cards = take(cards.length)
+        new_cards
+    end
 end
 # deck = Deck.new
-# deck.cards.each {|card| p card.value}
+# deck.cards.each {|card| p "#{card.value} of #{card.suit}"}

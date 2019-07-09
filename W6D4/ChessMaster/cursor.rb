@@ -33,11 +33,13 @@ MOVES = {
 
 class Cursor
 
-  attr_reader :cursor_pos, :board
+  attr_reader :cursor_pos, :board 
+  attr_accessor :selected
 
   def initialize(board)
     @board = board
     @cursor_pos = [0,0]
+    @selected = false
   end
 
   def get_input
@@ -79,11 +81,17 @@ class Cursor
   def handle_key(key)
     case key
     when :return, :space
-      # return the @cursor_pos in case of :return or :space
-      @selected = true
+      if @selected == false &&
+        @selected = true
+        return @cursor_pos
+      else
+        @selected = false
+        return @cursor_pos
+      end
     when :left, :right, :up, :down
       # call #update_pos with the appropriate movement difference from MOVES 
       # and return nil (in case of :left, :right, :up, and :down) 
+      @selected = false
       update_pos(MOVES[key])
     when :ctrl_c
       # exit from the terminal process (in case of :ctrl_c)
