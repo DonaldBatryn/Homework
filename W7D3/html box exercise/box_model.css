@@ -1,0 +1,35 @@
+div {
+  height: 200px;
+  width: 200px;
+}
+
+div {
+  padding: 50px;
+  border: 5px solid black;
+}
+/* class = .class */
+#first-div {
+  background-color: #39cccc;
+
+}
+
+#second-div {
+  background-color: #ff4136;
+  box-sizing: border-box;
+}
+
+
+
+h1 {
+  color: red;
+}
+
+p {
+  width: 250px;
+  min-height: 400px;
+  background-color: #7fdbff;
+  border: 5px solid red;
+  padding: 20px;
+  box-sizing: border-box;
+  font-family: cursive;
+}
