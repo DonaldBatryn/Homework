@@ -235,7 +235,19 @@ def price_like_shiny_mouse
 
   # DO NOT USE A SUBQUERY
   execute(<<-SQL) 
-  
+  SELECT
+    toys.name, toys.price
+  FROM 
+    toys
+  WHERE
+    price IN (
+      SELECT
+        price
+      FROM 
+        toys
+      WHERE
+        name = 'Shiny Mouse'
+    )
   SQL
 end
 
@@ -249,7 +261,21 @@ def price_like_shiny_mouse_sub
 
   # USE A SUBQUERY
   execute(<<-SQL) 
-
+  SELECT
+    toys.name, toys.price
+  FROM 
+    toys
+  WHERE
+    price IN (
+      SELECT
+        price
+      FROM 
+        toys
+      WHERE
+        name = 'Shiny Mouse'
+    ) AND name != 'Shiny Mouse'
+    ORDER BY
+      toys.name
   SQL
 end
 
