@@ -1,9 +1,11 @@
 require_relative 'db_connection'
 require 'active_support/inflector'
+require "byebug"
 # NB: the attr_accessor we wrote in phase 0 is NOT used in the rest
 # of this project. It was only a warm up.
 
 class SQLObject #Parent SQL class
+  
 
   def self.columns
     # ...
@@ -95,23 +97,34 @@ class SQLObject #Parent SQL class
   
 
   def insert
-    # ...
-    # col_names = self.columns
-    # n = col_names.length
-    # questionmark = Array.new(n, ?)
-    # DBConnection.execute(<<-SQL, *self.attribute_values)
-    # INSERT INTO
-    #   *col_names
-    # VALUES
-    #   *questionmark
-    # SQL
+    col_names = self.class.columns
+    n = col_names.length - 1
+    col_string = col_names.drop(1).join(",")
+    questionmark = ["?"] * n
+    quest_string = questionmark.join(",")
+    # debugger
+    DBConnection.execute(<<-SQL, *self.attribute_values)
+    INSERT INTO
+      #{self.class.table_name} (#{col_string})
+    VALUES
+      (#{quest_string})
+    SQL
+    self.id = DBConnection.last_insert_row_id
   end
 
   def update
-    # ...
+    set_line = self.class.columns.map {|col| "#{col} = ?"}.join(',')
+    DBConnection.execute(<<-SQL, *self.attribute_values, self.id)
+    UPDATE
+      #{self.class.table_name} 
+    SET
+      #{set_line}
+    WHERE
+      id = ?
+    SQL
   end
 
   def save
-    # ...
+    self.id.nil? ? self.insert : self.update
   end
 end
