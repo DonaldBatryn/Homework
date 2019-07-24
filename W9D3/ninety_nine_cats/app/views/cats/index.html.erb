@@ -1,0 +1,18 @@
+<h1>All the Cats</h1>
+
+<p>
+    
+<% @cats.each do |cat1| %>
+<%#debugger%>
+  <h2><a href="<%=cat_url(cat1)%>"><%=cat1.name%></a></h2>
+  <br>
+
+<%end%>
+</p>
+
+<%
+=begin%>
+ <a href="/cats/<%#=cat1.id%>"><%=cat1.name%></a> 
+<%
+=end%>
+<%#= link_to cat1.name, cat_url(cat1) %>
