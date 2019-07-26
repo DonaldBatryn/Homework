@@ -72,3 +72,36 @@ Migrating to CreateUsers (20190725051744)
   [1m[36mUser Create (1.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "Houdini"], ["password_digest", "$2a$12$LCRAoxZ.1f.J0U3dinCfY.6Z1aNoiGWFKoI7vnDxbw6VzpzkBZMd2"], ["session_token", "EUZuYiZximdWJn8OOkP4Kg"], ["created_at", "2019-07-25 06:14:23.619238"], ["updated_at", "2019-07-25 06:14:23.619238"]]
   [1m[35m (25.7ms)[0m  [1m[35mCOMMIT[0m
   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Started GET "/" for ::1 at 2019-07-25 09:15:27 -0500
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/donaldbatryn/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/donaldbatryn/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/donaldbatryn/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.3/lib/rails/templates/rails/welcome/index.html.erb (14.0ms)
+Completed 200 OK in 76ms (Views: 39.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for ::1 at 2019-07-25 09:15:36 -0500
+
+AbstractController::ActionNotFound - The action 'index' could not be found for UsersController:
+
+Started POST "/__better_errors/ec81b749e4fa58ff/variables" for ::1 at 2019-07-25 09:15:37 -0500
+Started GET "/users/new" for ::1 at 2019-07-25 09:15:51 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (2.1ms)
+  Rendered users/new.html.erb within layouts/application (22.6ms)
+Completed 200 OK in 1924ms (Views: 1836.4ms | ActiveRecord: 16.9ms)
+
+
+Started POST "/users" for ::1 at 2019-07-25 09:16:02 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"username"=>"dbatryn3", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 2ms (ActiveRecord: 0.0ms)
+
+
+
+ActionController::InvalidAuthenticityToken - ActionController::InvalidAuthenticityToken:
+
+Started POST "/__better_errors/611538247c3a0174/variables" for ::1 at 2019-07-25 09:16:03 -0500
