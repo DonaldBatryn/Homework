@@ -1,0 +1,21 @@
+
+
+<h1>Welcome to Music App!</h1>
+<h2>Create an Account</h2>
+
+<form action="<%= users_url %>" method="POST">
+
+   <%= auth_token %>
+    <label for="email">Email</label>
+
+        <input type='text' name="user[email]" id="email">
+    
+        <br>
+
+    <label for="pw">Password</label>
+        <input type='text' name="user[password]" id="pw">
+    
+    <br>
+    
+    <input type="submit" value="Sign Up!">
+</form>
