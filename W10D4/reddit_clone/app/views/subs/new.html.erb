@@ -1,0 +1,16 @@
+<h1>Create New Subreddit</h1>
+
+
+<form action="<%= subs_url %>" method="POST">
+    <%=auth_token%>
+    <label>
+        Title
+        <input type="text" name="sub[title]">
+    </label>
+      <label>
+        Description
+        <input type="textarea" name="sub[description]">
+    </label>
+
+    <input type="submit" value="Create New Subreddit">
+</form>

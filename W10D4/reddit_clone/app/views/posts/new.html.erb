@@ -1,0 +1,32 @@
+<h1>New Post</h1>
+
+<form action="<%= posts_url %>" method="POST">
+    <%= auth_token %>
+
+    <label>
+        Title * required
+        <input type="text" name="post[title]">
+    </label>
+
+    <label>
+        URL 
+        <input type="text" name="post[url]">
+    </label>
+
+    <label>
+        Content 
+        <input type="text" name="post[content]">
+        <br>
+    </label>
+<br>
+    <label>
+        Select Sub-reddits
+        <ul style="list-style: none">
+            <% @subs.each do |sub| %>
+                <li><input type="radio" name="post.sub" value="<%=sub%>"><%= sub.title %></li>
+            <% end %>
+        </ul>
+    </label>
+
+    <input type="submit" value="Submit Post">
+</form>
