@@ -46,6 +46,7 @@ function fizzBuzz(array) {
 function isPrime(num) {
     if (num < 2) {
         console.log(false);
+        return false;
     };
     for (let i = 2; i < num; i++) {
         if (num % i === 0) {
@@ -70,18 +71,19 @@ function isPrime(num) {
 // false
 
 function sumOfNPrimes(n) {
-    let primeSum = 0
-    let numPrimes = 0
+    let primeSum = 0;
+    let numPrimes = 0;
     for (let i = 2; numPrimes < n; i++) {
         if (isPrime(i) === true) {
             primeSum = primeSum + i;
             numPrimes = numPrimes + 1;
-            console.log("------")
+            console.log("------");
         };
     };
     console.log(primeSum);
     
-};
+}
+
 
 sumOfNPrimes(0)
 // 0
