@@ -1,0 +1,64 @@
+/* PHASE 5: Cats */
+
+.content-header {
+    border: 1px solid #ccc;
+    height: 200px;
+    width: 900px;
+    /* background-image: url(cats.jpg); */
+    background-size: inherit;
+    position: relative;
+    overflow: hidden;
+ 
+}
+
+.content-header img {
+   height: auto;
+   /* overflow: hidden; */
+}
+
+.content-header p {
+    position: absolute;
+    left: 350px;
+    font-size: 30px;
+    color: white;
+    top: 150px;
+    text-shadow: black;
+}
+
+.button {
+    background-color: white;
+    top: 135px;
+    left: 750px;
+    color: black;
+    height: 40px;
+    font-weight: bold;
+    border-radius: 16px;
+    width: 80px;
+    position: absolute;
+    padding: 7px;
+    /* z-index: 3; */
+    border: 1px solid black;
+}
+
+
+.button:hover {
+    background-color: gray;
+}
+
+.profile-picture {
+    border: 1px solid black;
+    border-radius: 8px;
+    position: relative;
+    display: block;
+    margin-top: -130px;
+    /* z-index: 4; */
+    overflow: hidden;
+}
+
+.profile-info {
+    
+}
+
+.profile-nav {
+
+}
