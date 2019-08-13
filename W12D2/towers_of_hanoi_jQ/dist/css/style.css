@@ -1,0 +1,42 @@
+.tower-0, .tower-1, .tower-2 {
+    width: 150px;
+    height: 150px;
+    border-bottom: 10px solid gold;
+    vertical-align: bottom;
+    margin-right: 10px;
+    padding: 0;
+    align-items: center;
+    list-style: none;
+    float: left;
+}
+
+
+
+li {
+    
+    display: block;
+    /* margin: 5px; */
+    border: 1px solid blue;
+    border-radius: 5px;
+    margin: auto;
+    border-radius: 20px;
+    
+}
+
+.disc-0 {
+    width: 60px;
+    height: 47px;
+    background-color: darkred;
+    
+}
+.disc-1 {
+    width: 100px;
+    height: 47px;
+    background-color: red;
+}
+.disc-2 {
+ 
+    width: 140px;
+    height: 47px;
+    background-color: pink;
+}

@@ -1,0 +1,56 @@
+/* PHASE 9: Forms */
+.form-thumb {
+    float: left;
+    margin: auto;
+}
+
+.form-field {
+    float: left;
+    width: 400px;
+    height: 300px;
+    margin: 0 0 0 30px;
+    padding: 20px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.form-group input {
+    border: 1px solid gray;
+    margin: 15px;
+    padding: 5px;
+    display: block;
+}
+
+.body {
+    height: 100px;
+    width: 280px;
+}
+
+.input {
+    margin: 0 0 10px 0;
+}
+.input > label {
+    display: block;
+    font-weight: 500;
+    padding: 0 0 5 0;
+}
+
+label {
+    margin-left: 13px;
+}
+
+.buttons {
+    
+}
+
+.buttons .post-to {
+    border: 1px solid green;
+    padding: 5px 10px 10px 5px;
+    color: white;
+    font-weight: 500;
+    margin: 5px;
+    border-radius: 10px;
+    background-color: limegreen;
+    box-shadow: gray
+    
+}
