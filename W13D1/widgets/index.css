@@ -1,0 +1,15 @@
+body {
+    background: cornflowerblue
+}
+
+h1 {
+    color: bisque;
+    font-family: 'Megrim', cursive;
+    font-size: 56px;
+    margin-top: 0px;
+}
+
+h1:first-of-type {
+    -webkit-user-modify: read-write-plaintext-only;
+    -webkit-font-stroke: thin;
+}
