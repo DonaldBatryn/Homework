@@ -7,15 +7,11 @@ class Board extends React.Component {
     super(props);
     this.props = props
     this.board = this.props.board
-    // this.state = {
-    //   board: this.props.board.grid
-    // }
+  
   }
 
   render() {
-    // debugger
-    // const rows = ''
-    // ro
+ 
     const mappedGrid = this.props.board.grid.map(row => row = `<div>${row}</div>`)
     return (
       <div>
@@ -41,15 +37,3 @@ class Board extends React.Component {
 
 export default Board;
 
-// this.props.board.grid.forEach(row,rowI)=>{
-//   row.forEach(tile, tileIdx)=>{
-//     <div></div>
-//   }
-// }
-
-// <div>{theVariable}=={grid}
-  // <div><Tile /><Tile /><Tile /><Tile /><Tile /><Tile /></div>
-  // <div><Tile /><Tile /><Tile /><Tile /><Tile /><Tile /></div>
-  // <div><Tile /><Tile /><Tile /><Tile /><Tile /><Tile /></div>
-  // <div><Tile /><Tile /><Tile /><Tile /><Tile /><Tile /></div>
-// </div>
