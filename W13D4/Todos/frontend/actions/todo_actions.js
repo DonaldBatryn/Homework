@@ -11,5 +11,8 @@ export const receiveTodo = (todo) => ({
     todo
 })
 
+
+
 window.receiveTodo = receiveTodo; // REMOVE ME
 window.receiveTodos = receiveTodos; // REMOVE ME
+

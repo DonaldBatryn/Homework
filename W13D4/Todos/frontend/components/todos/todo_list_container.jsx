@@ -10,7 +10,8 @@ const mapDispatchToProps = (dispatch) => ({
     receiveTodo: todo => dispatch(receiveTodo(todo))
 })
 
-export default TodoListContainer = connect(
+export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(TodoList);
+
