@@ -9,8 +9,12 @@ export default class TodoList extends React.Component {
         super(props)
     }
     
+    componentDidMount(){
+        this.props.fetchTodos
+    }
+
     render(){
-        debugger
+        // debugger
         // let newId;
         const todoLis = this.props.todos.map(el => {
             // const newId = uniqueId();
@@ -20,7 +24,7 @@ export default class TodoList extends React.Component {
         return (
             <ul>
                 {todoLis}
-                <TodoForm receiveTodo={this.props.receiveTodo} />
+                <TodoForm createTodo={this.props.createTodo} errors={this.props.errors} receiveTodo={this.props.receiveTodo} />
             </ul>
         )
     }
