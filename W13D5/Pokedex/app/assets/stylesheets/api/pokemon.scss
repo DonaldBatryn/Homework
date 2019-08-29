@@ -9,6 +9,14 @@
     margin:auto;
     display: block;
 }
+.item-img {
+    width: 200px;
+    height: 200px;
+    align-content: center;
+    margin:auto;
+    display: inline;
+}
+
 ul {
     list-style: none;
 }
@@ -24,6 +32,9 @@ h1 {
     margin-bottom: 50px;
 }
 
+.toy-list{
+    justify-content: center;
+}
 
 // blabla frog seed
 // blabla frog grass
