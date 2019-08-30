@@ -1,0 +1,27 @@
+img {
+    width: 700px;
+    display: fixed;
+    z-index: -2;
+}
+nav {
+    display: flex;
+    background-color: darkseagreen;
+    height: 60px;
+    width: 100%;
+}
+nav a {
+    overflow: hidden;
+    padding: 10px 17px 10px 17px;
+    text-align: center;
+    border: 2px solid darkgray;
+    border-radius: 6px;
+    width: 30px;
+}
+nav p {
+    font-size: 12px;
+}
+
+#main-title {
+  position: absolute;
+  margin: o auto;
+}
