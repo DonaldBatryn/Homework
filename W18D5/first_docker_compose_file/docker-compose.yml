@@ -1,0 +1,8 @@
+version: "2"
+
+services:
+  nginx:
+    build: .
+    image: donaldbatryn/practicecompose
+    ports:
+      - '80:80'
