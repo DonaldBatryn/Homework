@@ -5,6 +5,9 @@ const db = require("../config/keys.js").MONGO_URI;
 const expressGraphQL = require("express-graphql");
 const models = require('./models');
 const schema = require("./schema/schema");
+const webpackMiddleware = require("webpack-dev-middleware");
+const webpack = require("webpack");
+const webpackConfig = require("../webpack.config.js");
 
 
 const app = express();
@@ -31,5 +34,8 @@ app.use(
     graphiql: true
   })
 );
+
+app.use(express.static('public'));
+app.use(webpackMiddleware(webpack(webpackConfig)));
 
 module.exports = app;

@@ -118,19 +118,88 @@ GodSchema.statics.removeRelative = (godId, relativeId, relationship) => {
 
 };
 
+GodSchema.statics.findEmblems = function (godId) {
+    return this.findById(godId)
+        .populate("emblems")
+        .then(god => god.emblems);
+};
+
 GodSchema.statics.addEmblem = (godId, emblemId) => {
     const God = mongoose.model("god");
     const Emblem = mongoose.model("emblem");
 
-    return God.findById(godId).then(
-        god => {
-            const emblem = Emblem.findById(emblemId)
-            god.emblems.push(emblem)
-            return god
+    return God.findById(godId).then(god => {
+        return Emblem.findById(emblemId).then(emblem => {
+            god.emblems.push(emblem);
+            emblem.gods.push(god);
+
+            return Promise.all([god.save(), emblem.save()]).then(
+                ([god, emblem]) => god
+            );
+        });
+    });
+};
+
+GodSchema.statics.removeEmblem = (godId, emblemId) => {
+    const God = mongoose.model('god');
+    const Emblem = mongoose.model('emblem');
+
+    return God.findById(godId).then(god => {
+        return Emblem.findById(emblemId).then(emblem => {
+            god.emblems.pull(emblem);
+            emblem.gods.pull(god);
+
+            return Promise.all([god.save(), emblem.save()]).then(
+                ([god, emblem]) => god
+            );
+        });
+    });
+};
+
+GodSchema.statics.addDomain = (godId, domain) => {
+    const God = mongoose.model("god");
+
+    return God.findById(godId).then(god => {
+        god.domains.push(domain);
+
+        god.save().then(god => god);
+    });
+};
+
+GodSchema.statics.removeDomain = (godId, domain) => {
+    const God = mongoose.model("god");
+
+    return God.findById(godId).then(god => {
+        god.domains.forEach((godDomain, i) => {
+            if (godDomain === domain) {
+                god.domains.splice(i, 1);
+            }
+        });
+
+        god.save().then(god => god);
+    });
+};
+
+GodSchema.statics.updateAbode = (godId, abodeId) => {
+    const God = mongoose.model("god");
+    const Abode = mongoose.model("abode");
+
+    return God.findById(godId).then(god => {
+        if (god.abode) {
+            Abode.findById(god.abode).then(oldAbode => {
+                oldAbode.gods.pull(god);
+                return oldAbode.save();
+            });
         }
-    )
- 
-  
-}
+        return Abode.findById(abodeId).then(newAbode => {
+            god.abode = newAbode;
+            newAbode.gods.push(god);
+
+            return Promise.all([god.save(), newAbode.save()]).then(
+                ([god, newAbode]) => god
+            );
+        });
+    });
+};
 
 module.exports = mongoose.model("god", GodSchema);
