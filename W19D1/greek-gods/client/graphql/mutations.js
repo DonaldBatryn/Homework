@@ -75,5 +75,15 @@ export default {
                 domains
             }
         }
+    `,
+    UPDATE_GOD_ABODE: gql`
+        mutation UpdateGodAbode($godId: ID, $abodeId: ID) {
+            updateGodAbode(godId: $godId, abodeId: $abodeId) {
+                id
+                abode{
+                    name
+                }
+            }
+        }
     `
 };
