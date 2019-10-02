@@ -81,7 +81,9 @@ export default {
             updateGodAbode(godId: $godId, abodeId: $abodeId) {
                 id
                 abode{
+                    id
                     name
+                    coordinates
                 }
             }
         }

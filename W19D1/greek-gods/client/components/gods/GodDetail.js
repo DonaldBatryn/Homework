@@ -25,7 +25,7 @@ const GodDetail = props => {
                             <TypeDetail id={data.god.id} type={data.god.type} />
                             <DescriptionDetail id={data.god.id} description={data.god.description} />
                             <DomainsDetail god={data.god} domains={data.god.domains} />
-                            <AbodeDetail id={data.god.id} abode={data.god.abode}/>
+                            <AbodeDetail id={data.god.id} abode={data.god.abode} god={data.god}/>
                         </div>
                     )
                 }}
