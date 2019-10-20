@@ -33,5 +33,5 @@ const GodDetail = props => {
         );
     
 }
-
+f
 export default withRouter(GodDetail);
