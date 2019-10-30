@@ -41,7 +41,23 @@
 // -----------
 function linkedListIntersection(list1, list2) {
   // TODO: Implement the hasCycle function!
+  let vals1 = [];
 
+  let head1 = list1.head;
+  let current = head1;
+  vals1.push(current.value)
+  while (current.next) {
+    current = current.next;
+    vals1.push(current.value)
+  }
+  let head2 = list2.head;
+  current = head2;
+  if (vals1.includes(current.value)) return current;
+  while (current.next) {
+    current = current.next
+    if (vals1.includes(current.value)) return current;
+  }
+  return null;
 }
 
 // ----------------------------------------
