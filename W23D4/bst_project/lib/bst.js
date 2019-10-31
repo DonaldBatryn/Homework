@@ -45,20 +45,18 @@ class BST {
         }
     }
 
-    searchIter(val) {
+    searchIter(val, root = this.val) {
         if (!this.root) return false;
-        let exists = false
-        let currentNode = this.root;
-        // if (val < this.root.val) {
-        //     while (val < currentNode.val) {
-        //         currentNode = currentNode.left
-        //     }
-        // } else {
-        //     while (val > currentNode.val) {
-        //         currentNode = currentNode.right
-        //     }
-        // }
-        return exists;
+        while (root) {
+            if (val === root.val) {
+                return true;
+            }else if (val < root.val) {
+                root = root.left
+            } else if (val > root.val) {
+                root = root.right
+            }
+        }
+        return false
     }
 }
 
